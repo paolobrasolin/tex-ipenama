@@ -5,7 +5,7 @@ Small utility to double-check and amend hyphenated words in `*TeX` documents.
 Usage:
 
 1. slap this repo into your document root folder;
-2. compile your document with `latexmk` with your usual parameters plus the `-r "ipename.latexmkrc"` flag;
+2. compile your document with `latexmk` with your usual parameters plus the `-r "ipenama.latexmkrc"` flag;
 3. run `findhyph ipenama/*.log`;
 4. run `ipenama.py`.
 
