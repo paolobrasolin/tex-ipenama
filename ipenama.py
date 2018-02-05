@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 
+import sys
+import os
+from pathlib import Path
 from lxml import html
 from requests import get
 from re import compile
@@ -7,7 +10,8 @@ from colorama import Fore, Style
 
 #=============[ read wordlist ]=================================================
 
-input = open('ipenama/main.hyph')
+folder = 'ipenama'
+input = open(os.path.join(folder, sys.argv[1] + '.hyph'))
 words = input.read().splitlines()
 input.close()
 
@@ -71,4 +75,3 @@ print("}", file=log_tex)
 log_tex.close()
 log_dup.close()
 log_err.close()
-
