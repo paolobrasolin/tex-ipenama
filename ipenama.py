@@ -42,14 +42,17 @@ print("\\hyphenation{", file=log_tex)
 
 # using Merriam Webster dictionary
 
+# NOTE: 2+1 characters in the string, last one is an invisible zero width space
+SYLLABLE_SEPARATOR = u'Â·​'
 
 def search(word):
     url = 'http://www.merriam-webster.com/dictionary/' + word
     response = get(url)
     tree = html.fromstring(response.content)
-    syllables = tree.xpath(
+    result = tree.xpath(
         'normalize-space((//*[@class="word-syllables"])[1]/text())')
-    control = syllables.replace(u'·', '')
+    syllables = result.replace(SYLLABLE_SEPARATOR, u'·')
+    control = result.replace(SYLLABLE_SEPARATOR, '')
     return syllables, control
 
 # =============[ process wordlist ]============================================
